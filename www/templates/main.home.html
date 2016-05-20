@@ -1,13 +1,20 @@
 <ion-view view-title="Home">
   <ion-content class="padding">
-    <div class="list">
+    <ion-header-bar class="bar-positive">
+      <h1 class="title" style="text-align:center">Posts</h1>
+    </ion-header-bar>
+    <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh..." refreshing-text="Refreshing!"
+                   refreshing-icon="ion-loading-c">
+    </ion-refresher>
+
+    <div class="list" ng-repeat="obj in array.data">
       <a class="item item-thumbnail-left" href="#">
-        <img src="img/user.jpg">
+        <img src={{obj.img}}>
 
-        <h2>Pretty Machine</h2>
+        <h2>{{obj.title}}</h2>
+        <span style="height:30px;white-space:normal;color:grey;">author: {{obj.author}}</span>
 
-        <p style="height:40px;white-space:normal;">Some description or the beginning of the article or
-          something else</p>
+        <p style="height:40px;white-space:normal;color:grey;">{{obj.text}}</p>
 
         <div style="position: relative;top:22px;">
           <i class="icon ion-thumbsup" style="padding-left: 5px"></i>
@@ -16,113 +23,5 @@
         </div>
       </a>
     </div>
-
-
-    <!--<div class="bar bar-header has-tabs-top bar-positive">
-      <div class="tabs-striped tabs-background-positive tabs-color-light">
-        <div class="tabs">
-          <a class="tab-item " href="#">
-            Activity
-          </a>
-          <a class="tab-item" href="#">
-            Follower
-          </a>
-          <a class="tab-item" href="#">
-            Recommend
-          </a>
-        </div>
-      </div>
-    </div>-->
-    <!--<div class="row">-->
-    <!--<div class="col col-50">-->
-    <!--<div class="list card">-->
-    <!--<div class="item item-avatar">-->
-    <!--<img src="img/ben.png">-->
-
-    <!--<h2>Ben</h2>-->
-
-    <!--<p>7月31号</p>-->
-    <!--</div>-->
-
-    <!--<div class="item item-body">-->
-    <!--<img width="50" src="img/user.jpg">-->
-
-    <!--<p>-->
-    <!--Picture cat.-->
-    <!--</p>-->
-
-    <!--<p>-->
-    <!--<a href="#" class="subdued">1 赞</a>-->
-    <!--<a href="#" class="subdued">5 评论</a>-->
-    <!--</p>-->
-    <!--</div>-->
-
-    <!--<div class="item tabs tabs-secondary tabs-icon-left">-->
-    <!--<a class="tab-item" href="#">-->
-    <!--<i class="icon ion-thumbsup"></i>-->
-    <!--赞-->
-    <!--</a>-->
-    <!--<a class="tab-item" href="#">-->
-    <!--<i class="icon ion-chatbox"></i>-->
-    <!--评论-->
-    <!--</a>-->
-    <!--<a class="tab-item" href="#">-->
-    <!--<i class="icon ion-share"></i>-->
-    <!--分享-->
-    <!--</a>-->
-    <!--</div>-->
-
-    <!--</div>-->
-    <!--</div>-->
-    <!--<div class="col col-50">-->
-    <!--<div class="list card">-->
-    <!--<div class="item item-avatar">-->
-    <!--<img src="img/ben.png">-->
-
-    <!--<h2>Ben</h2>-->
-
-    <!--<p>7月31号</p>-->
-    <!--</div>-->
-
-    <!--<div class="item item-body">-->
-    <!--<img width="50" src="img/user.jpg">-->
-
-    <!--<p>-->
-    <!--Picture cat.-->
-    <!--</p>-->
-
-    <!--<p>-->
-    <!--<a href="#" class="subdued">1 赞</a>-->
-    <!--<a href="#" class="subdued">5 评论</a>-->
-    <!--</p>-->
-    <!--</div>-->
-
-    <!--<div class="item tabs tabs-secondary tabs-icon-left">-->
-    <!--<a class="tab-item" href="#">-->
-    <!--<i class="icon ion-thumbsup"></i>-->
-    <!--赞-->
-    <!--</a>-->
-    <!--<a class="tab-item" href="#">-->
-    <!--<i class="icon ion-chatbox"></i>-->
-    <!--评论-->
-    <!--</a>-->
-    <!--<a class="tab-item" href="#">-->
-    <!--<i class="icon ion-share"></i>-->
-    <!--分享-->
-    <!--</a>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--</div>-->
-    <!--
-    <div class="button-bar" style="margin-top: -10px;">
-      <a class="button button-block {{topItems.firstSelected}}"
-         ng-click="activityTapped()">Activity</a>
-      <a class="button button-block {{topItems.secondSelected}}"
-         ng-click="followersTapped()">Follower</a>
-      <a class="button button-block {{topItems.thirdSelected}}"
-         ng-click="recommendsTapped()">Recommend</a>
-    </div>
-    -->
   </ion-content>
 </ion-view>

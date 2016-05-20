@@ -1,6 +1,16 @@
 angular.module('starter.controllers', [])
 
-  .controller('homeCtrl', function ($scope) {
+  .controller('homeCtrl', function ($scope, $timeout, $http) {
+
+      $http({
+        url:"php.php",
+        method:"POST"
+      })
+      //.then Promise/deferred
+        .then(function(arr){
+          $scope.array=arr;
+
+        });
   })
 
   .controller('searchCtrl', function ($scope) {
