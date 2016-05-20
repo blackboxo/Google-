@@ -1,51 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>
-	</title>
-	  <link href="ionic.min.css" rel="stylesheet">
-	<script src="ionic.min.js"></script>
-    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>  
-
-	<script>
-		
-	angular.module('mySuperApp', [])
-	
-	.controller('PopupCtrl',function($scope, $timeout, $http) {
-	
-	  $http({
-	    url:"php.php",
-	    method:"POST"
-	  })
-	  //.then Promise/deferred
-	  .then(function(arr){
-         $scope.array=arr;
-		 
-	  });
-	});
-    
-
-	</script>
-</head>
-<body ng-app="mySuperApp">
-	<div ng-controller='PopupCtrl'>
-
-
 <ion-view view-title="Home">
-  <ion-content class="padding">	 
-  <ion-header-bar class="bar-positive">
-    <h1 class="title" style="text-align:center">Posts</h1>
-  </ion-header-bar>
-   <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh..." refreshing-text="Refreshing!" refreshing-icon="ion-loading-c">
+  <ion-content class="padding">
+    <ion-refresher on-refresh="doRefresh()" pulling-text="Pull to refresh..." refreshing-text="Refreshing!"
+                   refreshing-icon="ion-loading-c">
     </ion-refresher>
 
-	<div class="list" ng-repeat="obj in array.data">
+    <div class="list" ng-repeat="obj in array.data">
       <a class="item item-thumbnail-left" href="#">
         <img src={{obj.img}}>
 
-        <h2 >{{obj.title}}</h2>
+        <h2>{{obj.title}}</h2>
         <span style="height:30px;white-space:normal;color:grey;">author: {{obj.author}}</span>
+
         <p style="height:40px;white-space:normal;color:grey;">{{obj.text}}</p>
 
         <div style="position: relative;top:22px;">
@@ -55,7 +20,5 @@
         </div>
       </a>
     </div>
-
-
-</body>
-</html>
+  </ion-content>
+</ion-view>
