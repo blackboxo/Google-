@@ -68,11 +68,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
         }
       })
 
-      .state('post-detail', {
+      .state('main.post-detail', {
         url: '/home/:postId',
-
+        views: {
+          'tab-home': {
             templateUrl: 'templates/post-detail.html',
             controller: 'postDetailCtrl'
+          }
+        }
       })
 
       .state('main.search', {
