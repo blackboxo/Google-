@@ -1,0 +1,62 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+
+<ion-view view-title="{{post.title}}">
+  <ion-content class="padding">
+    <h2>{{post.title}}</h2>
+
+
+    <p style="white-space:normal;color:grey;">
+      {{post.summary}}
+    </p>
+    <img ng-src={{post.banner}} style="width: 100%">
+
+
+
+    <div class="item tabs tabs-icon-left" style="margin-top: 20px;">
+      <a class="tab-item" ng-click="changeColor()">
+        <i class="icon ion-thumbsup {{color}}"></i>
+      </a>
+      <a class="tab-item" href="comment.html">
+        <i class="icon ion-chatbox"></i>
+      </a>
+    </div>
+
+    <div class="icon ion-ios-arrow-down" align="center" style="font-size: xx-large "></div>
+    <a class="item item-avatar" href="#">
+      <img src="img/adam.jpg">
+
+      <h2>Venkman</h2>
+
+      <p>Back off, man. I'm a scientist.</p>
+    </a>
+
+    <div class="list">
+
+      <a class="item item-avatar" href="#">
+        <img src="img/ben.png">
+
+        <h2>Venkman</h2>
+
+        <p>Back off, man. I'm a artist.</p>
+      </a>
+
+      <div class="list" style="position: fixed;bottom: 0px;">
+
+        <div class="item item-input-inset">
+          <label class="item-input-wrapper">
+            <input type="text" placeholder="Comments">
+          </label>
+          <button class="button button-small">
+            Comment
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>

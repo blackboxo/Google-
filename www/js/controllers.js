@@ -1,19 +1,95 @@
 angular.module('starter.controllers', [])
 
-  .controller('homeCtrl', function ($scope, $timeout, $http) {
+  .controller('homeCtrl', function ($scope, $timeout, $http, Posts) {
 
-      $http({
-        url:"php.php",
-        method:"POST"
-      })
-      //.then Promise/deferred
-        .then(function(arr){
-          $scope.array=arr;
+    //$http({
+    //  url: "php.php",
+    //  method: "POST"
+    //})
+    ////.then Promise/deferred
+    //  .then(function (arr) {
+    //    $scope.array = arr;
+    //
+    //  });
+    $scope.posts = Posts.all();
+    $scope.doRefresh = function () {
+      $scope.posts = Posts.all();
+      // Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
+    };
 
-        });
   })
 
-  .controller('searchCtrl', function ($scope) {
+  .
+  controller('postDetailCtrl', function ($scope, $stateParams, Posts) {
+    $scope.post = Posts.get($stateParams.postId);
+    $scope.color = null;
+    $scope.changeColor = function () {
+      if ($scope.color == null)
+        $scope.color = "assertive";
+      else if ($scope.color == "assertive")
+        $scope.color = null;
+    }
+  })
+
+  .controller('searchCtrl', function ($scope, $cordovaImagePicker, $ionicActionSheet) {
+
+    $scope.images_list = [];
+
+    // "添加附件"Event
+    $scope.addAttachment = function () {
+      //nonePopover();
+      $ionicActionSheet.show({
+        buttons: [
+          {text: '相机'},
+          {text: '图库'}
+        ],
+        cancelText: '关闭',
+        cancel: function () {
+          return true;
+        },
+        buttonClicked: function (index) {
+
+          switch (index) {
+
+            case 0:
+              appendByCamera();
+              break;
+            case 1:
+
+              pickImage();
+              break;
+            default:
+              break;
+          }
+          return true;
+        }
+      });
+    }
+
+
+    //image picker
+    var pickImage = function () {
+
+
+      var options = {
+        maximumImagesCount: 10,
+        width: 800,
+        height: 800,
+        quality: 80
+      };
+
+      $cordovaImagePicker.getPictures(options)
+        .then(function (results) {
+          for (var i = 0; i < results.length; i++) {
+            $scope.images_list.push(results[i]);
+          }
+        }, function (error) {
+          // error getting photos
+        });
+
+    }
+
   })
 
   .controller('chatsCtrl', function ($scope, Chats) {
