@@ -1,5 +1,10 @@
 angular.module('starter.controllers', [])
 
+  .controller("LoginCtrl", function ($scope, $state) {
+
+
+  })
+
   .controller('homeCtrl', function ($scope, $timeout, $http, Posts) {
 
     //$http({
@@ -20,8 +25,7 @@ angular.module('starter.controllers', [])
 
   })
 
-  .
-  controller('postDetailCtrl', function ($scope, $stateParams, Posts) {
+  .controller('postDetailCtrl', function ($scope, $stateParams, Posts) {
     $scope.post = Posts.get($stateParams.postId);
     $scope.color = null;
     $scope.changeColor = function () {
@@ -30,6 +34,10 @@ angular.module('starter.controllers', [])
       else if ($scope.color == "assertive")
         $scope.color = null;
     }
+  })
+
+  .controller('postWriteCtrl',function($scope){
+
   })
 
   .controller('searchCtrl', function ($scope, $cordovaImagePicker, $ionicActionSheet) {

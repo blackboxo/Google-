@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
+// 'starter.controllers' is found in controllers.js,
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
 
   .run(function ($ionicPlatform) {
@@ -58,6 +58,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
 
       // Each tab has its own nav history stack:
 
+      .state('login', {
+        url: '/login',
+        templateUrl: 'templates/Login.tpl.html',
+        controller: 'LoginCtrl'
+      })
+
       .state('main.home', {
         url: '/home',
         views: {
@@ -74,6 +80,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
           'tab-home': {
             templateUrl: 'templates/post-detail.html',
             controller: 'postDetailCtrl'
+          }
+        }
+      })
+
+      .state('main.post-write', {
+        url: '/write',
+        views: {
+          'tab-home': {
+            templateUrl: 'templates/post-write.html',
+            controller: 'postWriteCtrl'
           }
         }
       })
@@ -119,6 +135,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
       })
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/main/home');
+    $urlRouterProvider.otherwise('/login');
 
   });
+
