@@ -5,7 +5,11 @@
   The Friends service returns an array of friend data
 -->
 
-<ion-view view-title="{{post.title}}">
+<ion-view  hide-tabs="true" view-title="{{post.title}}">
+  <ion-nav-bar class="bar bar-header">
+    <ion-nav-back-button>
+    </ion-nav-back-button>
+  </ion-nav-bar>
   <ion-content class="padding">
     <h2>{{post.title}}</h2>
 

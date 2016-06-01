@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js,
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -23,7 +23,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider,$ionicConfigProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
     //使得导航栏在不同平台中适配标准
     $ionicConfigProvider.platform.ios.tabs.style('standard');
     $ionicConfigProvider.platform.ios.tabs.position('bottom');
@@ -137,5 +137,21 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services','n
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 
+  })
+  .directive('hideTabs', function ($rootScope) {
+    return {
+      restrict: 'A',
+      link: function (scope, element, attributes) {
+        scope.$on('$ionicView.beforeEnter', function () {
+          scope.$watch(attributes.hideTabs, function (value) {
+            $rootScope.hideTabs = value;
+          });
+        });
+
+        scope.$on('$ionicView.beforeLeave', function () {
+          $rootScope.hideTabs = false;
+        });
+      }
+    };
   });
 
