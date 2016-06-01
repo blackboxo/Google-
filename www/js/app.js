@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js,
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ngCordova','ng-mfb'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -104,6 +104,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       })
 
+      //.state('main.different', {
+      //  url: '/search/:differentId',
+      //  views: {
+      //    'tab-search': {
+      //      templateUrl: 'templates/different.html',
+      //      controller: 'differentCtrl'
+      //    }
+      //  }
+      //})
+
+      .state('main.different', {
+        url: '/different',
+        views: {
+          'tab-search': {
+            templateUrl: 'templates/different.html',
+            controller: 'differentCtrl'
+          }
+        }
+      })
+
       .state('main.chats', {
         url: '/chats',
         views: {
@@ -133,6 +153,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
           }
         }
       })
+
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');

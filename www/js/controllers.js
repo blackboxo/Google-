@@ -5,20 +5,29 @@ angular.module('starter.controllers', [])
 
   })
 
-  .controller('homeCtrl', function ($scope, $timeout, $http, Posts) {
+  .controller('homeCtrl', function ($scope, $timeout, $http) {
 
-    //$http({
-    //  url: "php.php",
-    //  method: "POST"
-    //})
-    ////.then Promise/deferred
-    //  .then(function (arr) {
-    //    $scope.array = arr;
-    //
-    //  });
-    $scope.posts = Posts.all();
+    $http({
+      url:"http://121.42.29.139/Google-/www/templates/php.php",
+      method:"POST",
+      data:{"username":"depkin"}
+    })
+    //.then Promise/deferred
+      .then(function(arr){
+        $scope.array=arr.data;
+        console.log($scope.array);
+      });
     $scope.doRefresh = function () {
-      $scope.posts = Posts.all();
+      $http({
+        url:"http://121.42.29.139/Google-/www/templates/php.php",
+        method:"POST",
+        data:{"username":"depkin"}
+      })
+      //.then Promise/deferred
+        .then(function(arr){
+          $scope.array=arr.data;
+          console.log($scope.array);
+        });
       // Stop the ion-refresher from spinning
       $scope.$broadcast('scroll.refreshComplete');
     };
@@ -100,6 +109,11 @@ angular.module('starter.controllers', [])
 
   })
 
+  .controller("differentCtrl", function ($scope, $state) {
+
+
+  })
+
   .controller('chatsCtrl', function ($scope, Chats) {
     // With the new view caching in Ionic, Controllers are only called
     // when they are recreated or on app start, instead of every page change.
@@ -120,8 +134,11 @@ angular.module('starter.controllers', [])
     $scope.chat = Chats.get($stateParams.chatId);
   })
 
-  .controller('accountCtrl', function ($scope) {
-    $scope.settings = {
-      enableFriends: true
+  .controller('accountCtrl', function ($scope,Posts) {
+    $scope.posts = Posts.all();
+    $scope.doRefresh = function () {
+      $scope.posts = Posts.all();
+      // Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
     };
   });

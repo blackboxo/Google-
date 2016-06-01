@@ -1,3 +1,5 @@
+<style>
+</style>
 <ion-view view-title="Home">
   <ion-nav-bar class="bar bar-header">
   </ion-nav-bar>
@@ -35,32 +37,62 @@
       </div>
     </div>
 
-
     <div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
-      <div class="list card" ng-repeat="post in posts">
+      <div class="list card" ng-repeat="obj in array track by $index">
         <a href="#/main/home/{{post.id}}">
           <div class="item item-avatar">
-            <img ng-src={{post.avatar}}>
+            <img ng-src=http://121.42.29.139/Google-/www/templates/{{obj.head}}>
 
-            <h2>{{post.title}}</h2>
+            <h2>{{obj.title}}</h2>
 
-            <p>{{post.writer}}</p>
+            <p>{{obj.name}}</p>
           </div>
 
-          <div class="item item-body full-image">
-            <img ng-src={{post.banner}} style="width: 100%">
-
-            <p style="white-space:normal;color:grey;">
-              {{post.summary}}
+          <div class="item item-body">
+            <p style="white-space:normal;color:grey;margin-top: 0px;">
+              {{obj.text.length>100?obj.text.substring(0,100)+"...":obj.text}}
             </p>
 
+            <div
+              style="background-image: url(http://121.42.29.139/Google-/www/templates/{{obj.img}});background-repeat: no-repeat;width: 100%;height: 150px;background-position: center;background-size: cover;">
+            </div>
+
             <p>
-              <a href="#" class="subdued">{{post.likes}} 赞</a>
-              <a href="#" class="subdued">{{post.comments}} 评论</a>
+              <a href="#" class="subdued">{{obj.likes}} likes</a>
+              <a href="#" class="subdued">{{obj.comments}} comments</a>
             </p>
           </div>
         </a>
       </div>
     </div>
+
+    <!--<div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">-->
+    <!--<div class="list card" ng-repeat="post in posts">-->
+    <!--<a href="#/main/home/{{post.id}}">-->
+    <!--<div class="item item-avatar">-->
+    <!--<img ng-src={{post.avatar}}>-->
+
+    <!--<h2>{{post.title}}</h2>-->
+
+    <!--<p>{{post.writer}}</p>-->
+    <!--</div>-->
+
+    <!--<div class="item item-body full-image">-->
+    <!--<div class="pic">-->
+    <!--<img ng-src={{post.banner}} style="width: 100%">-->
+    <!--</div>-->
+
+    <!--<p style="white-space:normal;color:grey;">-->
+    <!--{{post.summary}}-->
+    <!--</p>-->
+
+    <!--<p>-->
+    <!--<a href="#" class="subdued">{{post.likes}} likes</a>-->
+    <!--<a href="#" class="subdued">{{post.comments}} comments</a>-->
+    <!--</p>-->
+    <!--</div>-->
+    <!--</a>-->
+    <!--</div>-->
+    <!--</div>-->
   </ion-content>
 </ion-view>

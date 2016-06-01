@@ -57,7 +57,7 @@ angular.module('starter.services', [])
       avatar: "img/adam.jpg",
       title: "Adam Alternative",
       writer: "Photo Chaser",
-      banner: "img/slide_2.png",
+      banner: "img/pic.jpeg",
       summary: "The first two sentences in the article or the summary of it or something else just test for long length.",
       likes: "1",
       comments: "5",
