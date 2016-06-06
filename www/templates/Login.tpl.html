@@ -1,15 +1,16 @@
 <ion-view>
   <ion-content style="background-image: url('img/Babel.jpg');background-repeat: no-repeat;background-size:100% 100%;">
     <div class="row" style="margin: 0 auto">
-      <div class="col" align="center" style="margin-top: 200px">
+      <div class="col" align="center" style="margin-top: 150px">
         <div class="app-logo"><img src="img/LOGO.png" style="width: 150px;"></div>
 
-        <div class="list list-inset removePM">
-          <label class="item item-input"><input type="text" ng-model="user.username" placeholder="Username" > </label>
-          <label class="item item-input"><input type="password" ng-model="user.password" placeholder="Password" > </label>
+        <div class="list list-inset removePM" style="margin-top: 50px;">
+          <label class="item item-input"><input type="text" ng-model="username" placeholder="Username" > </label>
+          <label class="item item-input"><input type="password" ng-model="password" placeholder="Password" > </label>
         </div>
 
-        <div class="loginButton"><button class="button ion-unlocked button-block button-dark"> Login </button>  </div>
+        <div class="loginButton"><button type="submit" class="button ion-android-unlock button-block button-dark" ng-click="login()"> Login </button>  </div>
+        <text ui-sref="signup">Sign up</text>
       </div>
     </div>
   </ion-content>

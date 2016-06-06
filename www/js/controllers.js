@@ -2,30 +2,34 @@ angular.module('starter.controllers', [])
 
   .controller("LoginCtrl", function ($scope, $state) {
 
+  })
+
+  .controller("Sign_upCtrl", function ($scope, $state) {
 
   })
+
 
   .controller('homeCtrl', function ($scope, $timeout, $http) {
 
     $http({
-      url:"http://121.42.29.139/Google-/www/templates/php.php",
-      method:"POST",
-      data:{"username":"depkin"}
+      url: "http://121.42.29.139/Google-/www/templates/php.php",
+      method: "POST",
+      data: {"username": "depkin"}
     })
     //.then Promise/deferred
-      .then(function(arr){
-        $scope.array=arr.data;
+      .then(function (arr) {
+        $scope.array = arr.data;
         console.log($scope.array);
       });
     $scope.doRefresh = function () {
       $http({
-        url:"http://121.42.29.139/Google-/www/templates/php.php",
-        method:"POST",
-        data:{"username":"depkin"}
+        url: "http://121.42.29.139/Google-/www/templates/php.php",
+        method: "POST",
+        data: {"username": "depkin"}
       })
       //.then Promise/deferred
-        .then(function(arr){
-          $scope.array=arr.data;
+        .then(function (arr) {
+          $scope.array = arr.data;
           console.log($scope.array);
         });
       // Stop the ion-refresher from spinning
@@ -45,11 +49,11 @@ angular.module('starter.controllers', [])
     }
   })
 
-  .controller('postWriteCtrl',function($scope){
+  .controller('postWriteCtrl', function ($scope) {
 
   })
 
-  .controller('searchCtrl', function ($scope, $cordovaImagePicker, $ionicActionSheet) {
+  .controller('categoriesCtrl', function ($scope, $cordovaImagePicker, $ionicActionSheet) {
 
     $scope.images_list = [];
 
@@ -109,9 +113,30 @@ angular.module('starter.controllers', [])
 
   })
 
-  .controller("differentCtrl", function ($scope, $state) {
-
-
+  .controller("categoryDetailCtrl", function ($scope,$stateParams,Categories) {
+    $scope.cemfb_model = {
+      isEnabled: true,
+      menuState: 'close',
+      isHide: false,
+      marginRightCss: "margin-right: 10px;",
+    };
+    $scope.cemfb_mainClicked = function () {
+      if ($scope.cemfb_model.isHide) {
+        $scope.cemfb_model.menuState = "close";
+        $scope.cemfb_model.isHide = false;
+        $scope.cemfb_model.marginRightCss = "margin-right: 10px;";
+        return;
+      }
+    };
+    $scope.cemfb_hideClicked = function () {
+      $scope.cemfb_model.isHide = true;
+      $scope.cemfb_model.menuState = "close";
+      setTimeout(function () {
+        $scope.cemfb_model.marginRightCss = "margin-right: -30px;";
+        $scope.$apply();
+      }, 100);
+    };
+    $scope.categories = Categories.all();
   })
 
   .controller('chatsCtrl', function ($scope, Chats) {
@@ -134,7 +159,7 @@ angular.module('starter.controllers', [])
     $scope.chat = Chats.get($stateParams.chatId);
   })
 
-  .controller('accountCtrl', function ($scope,Posts) {
+  .controller('accountCtrl', function ($scope, Posts) {
     $scope.posts = Posts.all();
     $scope.doRefresh = function () {
       $scope.posts = Posts.all();

@@ -49,6 +49,59 @@ angular.module('starter.services', [])
     };
   })
 
+  .factory('Categories', function () {
+    // Might use a resource here that returns a JSON array
+
+    // Some fake testing data
+    var categories = [{
+      id: 0,
+      avatar: "img/adam.jpg",
+      title: "Adam Alternative",
+      writer: "Photo Chaser",
+      banner: "img/pic.jpeg",
+      summary: "The first two sentences in the article or the summary of it or something else just test for long length.",
+      likes: "1",
+      comments: "5",
+    },
+      {
+        id: 1,
+        avatar: "img/adam.jpg",
+        title: "Adam Alternative",
+        writer: "Photo Chaser",
+        banner: "img/slide_3.png",
+        summary: "The first two sentences in the article or the summary of it or something else just test for long length.",
+        likes: "1",
+        comments: "5",
+      },
+      {
+        id: 2,
+        avatar: "img/adam.jpg",
+        title: "Adam Alternative",
+        writer: "Photo Chaser",
+        banner: "img/slide_1.jpg",
+        summary: "The first two sentences in the article or the summary of it or something else just test for long length.",
+        likes: "1",
+        comments: "5",
+      }];
+
+    return {
+      all: function () {
+        return categories;
+      },
+      remove: function (category) {
+        categories.splice(categories.indexOf(category), 1);
+      },
+      get: function (categoryId) {
+        for (var i = 0; i < categories.length; i++) {
+          if (categories[i].id === parseInt(categoryId)) {
+            return categories[i];
+          }
+        }
+        return null;
+      }
+    };
+  })
+
 
   .factory("Posts", function () {
 

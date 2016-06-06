@@ -64,6 +64,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         controller: 'LoginCtrl'
       })
 
+      .state('signup', {
+        url: '/signup',
+        templateUrl: 'templates/sign_up.html',
+        controller: 'Sign_upCtrl'
+      })
+
       .state('main.home', {
         url: '/home',
         views: {
@@ -94,35 +100,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       })
 
-      .state('main.search', {
-        url: '/search',
+      .state('main.categories', {
+        url: '/categories',
         views: {
-          'tab-search': {
-            templateUrl: 'templates/main.search.html',
-            controller: 'searchCtrl'
+          'tab-categories': {
+            templateUrl: 'templates/main.categories.html',
+            controller: 'categoriesCtrl'
           }
         }
       })
 
-      //.state('main.different', {
-      //  url: '/search/:differentId',
-      //  views: {
-      //    'tab-search': {
-      //      templateUrl: 'templates/different.html',
-      //      controller: 'differentCtrl'
-      //    }
-      //  }
-      //})
-
-      .state('main.different', {
-        url: '/different',
+      .state('main.category-detail', {
+        url: '/categories/:categoryId',
         views: {
-          'tab-search': {
-            templateUrl: 'templates/different.html',
-            controller: 'differentCtrl'
+          'tab-categories': {
+            templateUrl: 'templates/category-detail.html',
+            controller: 'categoryDetailCtrl'
           }
         }
       })
+
 
       .state('main.chats', {
         url: '/chats',

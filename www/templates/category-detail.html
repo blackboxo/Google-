@@ -1,0 +1,43 @@
+<ion-view hide-tabs="true" view-title={{category.id}}>
+  <ion-nav-bar class="bar bar-header">
+  </ion-nav-bar>
+
+  <ion-content class="padding">
+    <div class="scroll" style="transform: translate3d(0px, 0px, 0px) scale(1);">
+      <div class="list card" ng-repeat="category in categories">
+        <a href="#/main/home/{{category.id}}">
+          <div class="item item-avatar">
+            <img ng-src={{category.avatar}}>
+
+            <h2>{{category.title}}</h2>
+
+            <p>{{category.writer}}</p>
+          </div>
+
+          <div class="item item-body">
+
+
+            <p style="white-space:normal;color:grey;margin-top: 0px;">
+              {{category.summary}}
+            </p>
+
+            <div
+              style="background-image: url('{{category.banner}}');background-repeat: no-repeat;width: 100%;height: 150px;background-position: center;background-size: cover;">
+            </div>
+
+            <p>
+              <a href="#" class="subdued">{{category.likes}} likes</a>
+              <a href="#" class="subdued">{{category.comments}} comments</a>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </ion-content>
+  <nav mfb-menu position="br" effect="zoomin" label="Edit" style="margin-bottom: 50px;{{cemfb_model.marginRightCss}}"
+       active-icon="ion-minus-round" resting-icon="ion-plus-round" ng-show="cemfb_model.isEnabled"
+       toggling-method="click" main-action="cemfb_mainClicked()" menu-state="cemfb_model.menuState">
+    <button mfb-button icon="ion-close-round" label="Hide" ng-click="cemfb_hideClicked()"></button>
+    <button mfb-button icon="ion-edit" label="Write" ui-sref="main.post-write"></button>
+  </nav>
+</ion-view>
