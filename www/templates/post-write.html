@@ -1,13 +1,28 @@
-<ion-view  hide-tabs="true" title="Write">
-  <ion-nav-bar class="bar bar-header">
-  </ion-nav-bar>
-  <ion-content>
-    <input class="text" placeholder="Title" style="font-size: xx-large;margin-left: 15px">
+<ion-view hide-tabs="true" title="Write">
+    <ion-nav-bar class="bar bar-header">
+    </ion-nav-bar>
+    <ion-content>
+        <input class="text" placeholder="Title" style="font-size: x-large;margin-left: 15px"
+               ng-model="formData.title">
 
-    </input>
-    <div style="border-top: 1px solid lightgrey;width:90%;margin: 0 auto"></div>
-    <textarea placeholder="Context" style="width: 90%;height: 300px;margin: 0 auto;font-size: x-large">
+        </input>
+        <div style="border-top: 1px solid lightgrey;width:90%;margin: 0 auto"></div>
+    <textarea placeholder="Context" ng-model="formData.text"
+              style="width: 90%;height: 150px;margin: 0 auto;font-size: large">
 
     </textarea>
-  </ion-content>
+
+
+        <ion-list>
+            <ion-item style="border-bottom-color: grey;">
+                <file-uploader data="formData.files" delegate="fileUploaderDelegate"></file-uploader>
+            </ion-item>
+            <div class="button-bar">
+                <button class="button button-positive" ng-click="upload()">
+                    Upload
+                </button>
+            </div>
+        </ion-list>
+
+    </ion-content>
 </ion-view>

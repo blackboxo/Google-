@@ -90,6 +90,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       })
 
+
+
       .state('main.post-write', {
         url: '/write',
         views: {
